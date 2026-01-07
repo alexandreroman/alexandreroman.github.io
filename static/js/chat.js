@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const chatSubmit = document.getElementById('chat-submit');
     const suggestedQuestions = document.querySelectorAll('.suggested-question');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
     let conversationId = null;
 
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatModal.classList.remove('hidden');
         chatModal.classList.add('flex');
         document.body.style.overflow = 'hidden';
+        if (mobileMenuBtn) mobileMenuBtn.classList.add('hidden');
         chatInput.focus();
     }
 
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatModal.classList.add('hidden');
         chatModal.classList.remove('flex');
         document.body.style.overflow = '';
+        if (mobileMenuBtn) mobileMenuBtn.classList.remove('hidden');
         promptInput.focus();
     }
 
