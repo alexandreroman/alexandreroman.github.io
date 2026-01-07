@@ -194,13 +194,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle mobile virtual keyboard
     if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', () => {
+        const handleVisualViewportResize = () => {
+            // Only apply on mobile/tablet (matches the lg breakpoint used in HTML)
+            if (window.innerWidth >= 1024) {
+                chatModal.style.height = '';
+                chatModal.style.top = '';
+                return;
+            }
+
             if (!chatModal.classList.contains('hidden')) {
-                // Wait for layout update
+                // Resize the modal wrapper to match the visual viewport
+                // This prevents the keyboard from covering the bottom part
+                chatModal.style.height = `${window.visualViewport.height}px`;
+                chatModal.style.top = `${window.visualViewport.offsetTop}px`;
+
+                // Ensure messages are scrolled to bottom after layout update
                 requestAnimationFrame(() => {
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 });
             }
-        });
+        };
+
+        window.visualViewport.addEventListener('resize', handleVisualViewportResize);
+        window.visualViewport.addEventListener('scroll', handleVisualViewportResize);
     }
 });
