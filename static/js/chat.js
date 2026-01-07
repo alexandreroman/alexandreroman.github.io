@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const params = new URLSearchParams();
-            params.append('question', text);
+            params.append('prompt', text);
             params.append('conversationId', conversationId);
 
             const response = await fetch('https://resumebot.rpilab.dev/chat', {
