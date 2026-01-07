@@ -1,0 +1,12 @@
+# MacOS
+.DS_Store
+
+# Hugo
+/public
+/resources
+.hugo_build.lock
+
+# Node
+node_modules
+package-lock.json
+yarn.lock

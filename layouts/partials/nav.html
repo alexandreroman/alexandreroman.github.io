@@ -1,0 +1,128 @@
+<nav id="navbar"
+    class="fixed top-0 inset-x-0 z-50 flex justify-center items-center px-6 py-4 transition-all duration-300 {{ if .IsHome }}opacity-0 animate-fade-in{{ else }}bg-dark/50 backdrop-blur-xl border-b border-white/5{{ end }}"
+    style="{{ if .IsHome }}animation-delay: 0.2s;{{ end }}">
+
+    <div class="w-full max-w-7xl flex items-center justify-between relative">
+        <!-- Logo -->
+        <a href="{{ .Site.BaseURL }}" class="relative z-50 group">
+            <span
+                class="text-xl font-bold tracking-tighter text-white transition-colors duration-300 group-hover:text-primary-glow">
+                AR<span class="text-primary">.</span>
+            </span>
+        </a>
+
+        <!-- Desktop Navigation (Floating Pill) -->
+        <div
+            class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 p-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl shadow-black/20">
+            {{ $currentPage := . }}
+            {{ range slice "About" "Experience" "Projects" }}
+            {{ $url := "" }}
+            {{ if eq . "About" }}{{ $url = $.Site.BaseURL }}{{ else }}{{ $url = printf "/%s/" (lower .) | absURL }}{{
+            end }}
+            {{ $isActive := false }}
+            {{ if eq . "About" }}
+            {{ $isActive = $.IsHome }}
+            {{ else }}
+            {{ $isActive = in $currentPage.RelPermalink (printf "/%s/" (lower .)) }}
+            {{ end }}
+
+            <a href="{{ $url }}"
+                class="px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 {{ if $isActive }}bg-white/10 text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]{{ else }}text-gray-400 hover:text-white hover:bg-white/5{{ end }}">
+                {{ . }}
+            </a>
+            {{ end }}
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn"
+            class="md:hidden relative z-50 p-2 text-gray-300 hover:text-white focus:outline-none">
+            <div class="w-6 h-5 flex flex-col justify-between overflow-hidden">
+                <span id="bar-top"
+                    class="w-full h-0.5 bg-current transform transition-all duration-300 origin-left"></span>
+                <span id="bar-mid" class="w-full h-0.5 bg-current transform transition-all duration-300"></span>
+                <span id="bar-bot"
+                    class="w-full h-0.5 bg-current transform transition-all duration-300 origin-left"></span>
+            </div>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu"
+    class="fixed inset-0 z-40 bg-dark/95 backdrop-blur-2xl flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-500">
+
+    <!-- Decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-[20%] -right-[20%] w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20">
+        </div>
+        <div class="absolute -bottom-[20%] -left-[20%] w-96 h-96 bg-violet-500/20 rounded-full blur-3xl opacity-20">
+        </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-6 relative z-50">
+        {{ range slice "About" "Experience" "Projects" }}
+        {{ $url := "" }}
+        {{ if eq . "About" }}{{ $url = $.Site.BaseURL }}{{ else }}{{ $url = printf "/%s/" (lower .) | absURL }}{{
+        end }}
+        {{ $isActive := false }}
+        {{ if eq . "About" }}
+        {{ $isActive = $.IsHome }}
+        {{ else }}
+        {{ $isActive = in $currentPage.RelPermalink (printf "/%s/" (lower .)) }}
+        {{ end }}
+
+        <a href="{{ $url }}"
+            class="text-2xl font-light tracking-tight transition-all duration-300 hover:scale-110 {{ if $isActive }}text-white{{ else }}text-gray-400 hover:text-white{{ end }}">
+            {{ . }}
+        </a>
+        {{ end }}
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const barTop = document.getElementById('bar-top');
+        const barMid = document.getElementById('bar-mid');
+        const barBot = document.getElementById('bar-bot');
+        const navbar = document.getElementById('navbar');
+        let isMenuOpen = false;
+
+        if (mobileBtn && mobileMenu && barTop && barMid && barBot) {
+            // Toggle Mobile Menu
+            mobileBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+
+                if (isMenuOpen) {
+                    // Open Menu
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                    mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                    document.body.style.overflow = 'hidden'; // Lock text scroll
+
+                    // Animate Hamburger
+                    barTop.classList.add('rotate-45', 'translate-x-[3px]');
+                    barMid.classList.add('opacity-0', 'translate-x-full');
+                    barBot.classList.add('-rotate-45', 'translate-x-[3px]');
+                } else {
+                    // Close Menu
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                    document.body.style.overflow = '';
+
+                    // Reset Hamburger
+                    barTop.classList.remove('rotate-45', 'translate-x-[3px]');
+                    barMid.classList.remove('opacity-0', 'translate-x-full');
+                    barBot.classList.remove('-rotate-45', 'translate-x-[3px]');
+                }
+            });
+
+            // Close menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) mobileBtn.click();
+                });
+            });
+        }
+    });
+</script>

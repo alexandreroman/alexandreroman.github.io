@@ -1,0 +1,8 @@
+<footer class="w-full py-6 text-center text-xs text-gray-600 {{ if .IsHome }}opacity-0 animate-fade-in{{ end }}" {{ if
+    .IsHome }}style="animation-delay: 1s;" {{ end }}>
+    <p>&copy; {{ now.Format "2006" }} Alexandre Roman. All rights reserved.</p>
+</footer>
+
+<!-- External Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="/js/chat.js"></script>

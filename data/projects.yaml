@@ -1,0 +1,23 @@
+- title: "Project Alpha"
+  subtitle: "An innovative tool for cloud infrastructure management."
+  description: "Automates deployment pipelines and ensures high availability across multiple regions using Go and Kubernetes."
+  link: "#"
+  tags:
+    - "Go"
+    - "Kubernetes"
+    - "SaaS"
+- title: "Code Assistant AI"
+  subtitle: "Next-gen AI agent for modifying codebases."
+  description: "Leverages LLMs to understand complex project contexts and perform autonomous refactoring tasks."
+  link: "#"
+  tags:
+    - "Python"
+    - "LLM"
+    - "FastAPI"
+- title: "Personal Portfolio"
+  subtitle: "A highly responsive and aesthetic portfolio site."
+  description: "Built with Hugo and Tailwind CSS, featuring glassmorphism design and smooth animations."
+  link: "#"
+  tags:
+    - "Hugo"
+    - "Tailwind"

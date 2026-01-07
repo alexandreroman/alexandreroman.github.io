@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default " en" }}" class="dark">
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body
+    class="text-white selection:bg-primary selection:text-white flex flex-col min-h-screen {{ if .IsHome }}overflow-hidden{{ end }}">
+    {{ partial "nav.html" . }}
+
+    {{ block "main" . }}{{ end }}
+
+    {{ partial "footer.html" . }}
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{{ define "main" }}
+<main class="flex-grow pt-32 px-4 pb-20 w-full max-w-4xl mx-auto">
+
+    <header class="mb-16 text-center sm:text-left opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Professional <span class="text-primary-glow">Experience</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-2xl">A timeline of my professional journey and the projects I've
+            contributed to.</p>
+    </header>
+
+    <!-- Timeline -->
+    <div class="relative border-l border-white/10 ml-3 md:ml-6 space-y-12">
+        {{ range $index, $element := .Site.Data.experiences }}
+        <div class="relative pl-8 md:pl-12 opacity-0 animate-slide-up" style="animation-delay: {{ printf " %.1f" (add
+            0.2 (mul $index 0.1)) }}s;">
+            <span
+                class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full {{ if eq $index 0 }}bg-primary{{ else }}bg-gray-600{{ end }} ring-4 ring-dark"></span>
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
+                    <h3 class="text-xl font-semibold text-white">{{ .title }}</h3>
+                    <span class="text-sm text-gray-400 font-mono bg-white/5 px-2 py-1 rounded">{{ .period }}</span>
+                </div>
+                <h4 class="text-lg text-primary-glow mb-3">{{ .company }}</h4>
+                <p class="text-gray-400 leading-relaxed mb-4">
+                    {{ .description }}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    {{ range .skills }}
+                    <span
+                        class="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">{{
+                        . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+
+</main>
+{{ end }}
