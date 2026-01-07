@@ -1,6 +1,7 @@
-<footer class="w-full py-6 text-center text-xs text-gray-600 {{ if .IsHome }}opacity-0 animate-fade-in{{ end }}" {{ if
-    .IsHome }}style="animation-delay: 1s;" {{ end }}>
-    <p>&copy; {{ now.Format "2006" }} Alexandre Roman. Licensed under the <a
+<footer
+    class="w-full max-w-7xl mx-auto border-l border-r border-white/5 py-6 text-center text-xs text-gray-600 {{ if .IsHome }}opacity-0 animate-fade-in{{ end }}"
+    {{ if .IsHome }}style="animation-delay: 1s;" {{ end }}>
+    <p>&copy; {{ now.Format "2006" }} Alexandre Roman.<br/>Licensed under the <a
             href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer"
             class="hover:text-primary transition-colors">Apache License, Version 2.0</a>.</p>
 </footer>
