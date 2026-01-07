@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         chatModal.classList.remove('flex');
         document.body.style.overflow = '';
         if (mobileMenuBtn) mobileMenuBtn.classList.remove('hidden');
-        promptInput.focus();
     }
 
     function addMessage(text, sender) {
