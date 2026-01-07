@@ -5,8 +5,7 @@
     {{ partial "head.html" . }}
 </head>
 
-<body
-    class="text-white selection:bg-primary selection:text-white flex flex-col min-h-screen {{ if .IsHome }}overflow-hidden{{ end }}">
+<body class="text-white selection:bg-primary selection:text-white flex flex-col min-h-screen">
     {{ partial "nav.html" . }}
 
     {{ block "main" . }}{{ end }}
