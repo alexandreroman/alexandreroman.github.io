@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function initChat() {
         conversationId = generateUUID();
         chatMessages.innerHTML = '';
-        // Add welcome message? Maybe not needed as per requirements.
     }
 
     function openModal() {
@@ -80,9 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 contentDiv.textContent = text;
             }
-            // Add some basic styling to markdown content inside
-            // This is a bit hacky but ensures markdown looks okay without global typography styles
-            // Ideally we'd use a 'prose' class from Tailwind Typography plugin
             contentDiv.classList.add('prose', 'prose-invert', 'prose-sm', 'max-w-none');
         } else {
             contentDiv.textContent = text;
