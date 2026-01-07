@@ -192,4 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
             handlePromptSubmit();
         });
     });
+
+    // Handle mobile virtual keyboard
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+            if (!chatModal.classList.contains('hidden')) {
+                // Wait for layout update
+                requestAnimationFrame(() => {
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                });
+            }
+        });
+    }
 });
