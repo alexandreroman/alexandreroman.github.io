@@ -51,6 +51,20 @@
             </a>
             {{ end }}
 
+            {{ with .Site.Params.social.cv }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
+                class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
+                <span class="sr-only">CV</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                    <text x="12" y="17" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold"
+                        stroke="none" fill="currentColor">CV</text>
+                </svg>
+            </a>
+            {{ end }}
+
             {{ with .Site.Params.social.x }}
             <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
                 class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
@@ -72,6 +86,8 @@
                 </svg>
             </a>
             {{ end }}
+
+
         </div>
     </div>
 
