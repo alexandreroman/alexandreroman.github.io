@@ -3,7 +3,6 @@
   description: "An interactive chatbot designed to discuss my CV and professional background (it is actually the application powering this website)."
   link: "https://github.com/alexandreroman/resumebot"
   tags:
-    - "Java"
     - "Spring Boot"
     - "Spring AI"
     - "Chatbot"
@@ -14,7 +13,6 @@
   description: "A Spring Boot & Spring AI application for playing chess against an AI, featuring an integrated chatbot to explain moves and provide strategic assistance."
   link: "https://github.com/alexandreroman/chess-ai"
   tags:
-    - "Java"
     - "Spring Boot"
     - "Spring AI"
     - "Game"
@@ -25,7 +23,6 @@
   description: "A website for building SWU decks in limited format. The app simulates opening booster packs, and users must build their decks from the cards they pull."
   link: "https://swulimited.com"
   tags:
-    - "Personal"
     - "TypeScript"
     - "Vue.js"
     - "Tailwind CSS"
