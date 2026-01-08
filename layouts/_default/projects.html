@@ -62,19 +62,50 @@
                         <span class="text-gray-500 text-sm">{{ .date }} • {{ .location }}</span>
                     </div>
                     <div class="w-full md:w-3/4">
-                        <h3 class="text-xl font-bold text-white mb-2">{{ .title }}</h3>
+                        <h3 class="text-xl font-bold text-white mb-2">
+                            {{ .title }}
+                            {{ if or (eq .language "French") (eq .language "Français") }}
+                            <img src="https://flagcdn.com/20x15/fr.png" alt="Français"
+                                class="inline-block h-4 w-auto ml-2 align-baseline rounded-sm shadow-sm opacity-80"
+                                title="Français">
+                            {{ else if or (eq .language "English") (eq .language "Anglais") }}
+                            <img src="https://flagcdn.com/20x15/us.png" alt="English"
+                                class="inline-block h-4 w-auto ml-2 align-baseline rounded-sm shadow-sm opacity-80"
+                                title="English">
+                            {{ end }}
+                        </h3>
                         <p class="text-gray-400 leading-relaxed mb-4">
                             {{ .description }}
                         </p>
-                        <a href="{{ .link }}"
-                            class="text-primary hover:text-primary-glow text-sm font-medium transition-colors inline-flex items-center gap-1">
-                            {{ .link_text }}
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 00-2 2h10a2 2 0 00-2-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                </path>
-                            </svg>
-                        </a>
+
+                        {{ $videoID := "" }}
+                        {{ if .link }}
+                        {{ if and (in .link "youtube.com") (in .link "v=") }}
+                        {{ $videoID = index (split (index (split .link "v=") 1) "&") 0 }}
+                        {{ else if in .link "youtu.be" }}
+                        {{ $parts := split .link "/" }}
+                        {{ $videoID = index $parts (sub (len $parts) 1) }}
+                        {{ if in $videoID "?" }}
+                        {{ $videoID = index (split $videoID "?") 0 }}
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+
+                        {{ if ne $videoID "" }}
+                        <div
+                            class="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl mb-6 group">
+                            <div
+                                class="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors pointer-events-none z-10">
+                            </div>
+                            <iframe class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/{{ $videoID }}" title="{{ .title }}" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        {{ end }}
+
+
                     </div>
                 </div>
             </div>
