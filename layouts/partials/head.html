@@ -1,8 +1,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
-<title>{{ if .IsHome }}Alexandre Roman - Engineer & Developer{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
-<meta name="description" content="{{ if .Param " description" }}{{ .Param "description" }}{{ else }}{{
-    .Site.Params.description }}{{ end }}">
+
+{{- $title := "Alexandre Roman - Engineer & Developer" -}}
+{{- if not .IsHome -}}
+{{- $title = printf "%s - %s" .Title .Site.Title -}}
+{{- end -}}
+<title>{{ $title }}</title>
+
+{{- $desc := .Params.description | default .Site.Params.description -}}
+<meta name="description" content="{{ $desc }}">
+<meta name="author" content="{{ .Site.Title }}">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+{{ with .Site.Params.social.x }}
+<meta name="twitter:creator" content="@{{ replace . "https://x.com/" "" }}">
+{{ end }}
+
 <link rel="license" href="https://www.apache.org/licenses/LICENSE-2.0">
 
 <!-- Google Fonts -->
