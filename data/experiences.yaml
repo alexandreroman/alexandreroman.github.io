@@ -1,24 +1,58 @@
-- title: "Senior Software Engineer"
-  company: "Google Deepmind"
-  period: "2023 - Present"
-  description: "Leading the development of advanced agentic coding systems. specialized in building scalable AI-driven solutions and improving developer productivity tools."
+- title: "Pre-Sales Expert & Technical Ambassador (EMEA | Key Accounts)"
+  company: "Pivotal / VMware / Broadcom"
+  period: "2018 - Present"
+  description: |
+    - **Pre-Sales & Strategy**: Technical lead for Kubernetes & Cloud-Native proposals catering to global accounts.
+    - **DevOps Consulting**: Facilitating "Path-to-Production" workshops and optimizing CI/CD pipelines.
+    - **Subject Matter Expert (SME)**: Global point of contact for Spring and Tanzu Application Platform; direct liaison with R&D.
+    - **Influence & Community**: International speaker (VMware Explore, Devoxx, Spring I/O) and technical hackathon lead.
+    - **Customer Success**: Post-sales technical advisory to drive adoption and secure renewals.
+    - **Awards & Impact**: Named Best EMEA Solution Engineer (2022), successfully secured multi-year renewals for strategic contracts.
+    - **Thought Leadership**: Author of technical articles on Spring, Kubernetes, and AI published in Programmez! magazine.
   skills:
-    - "Python"
-    - "TensorFlow"
-    - "Distributed Systems"
-- title: "Full Stack Developer"
-  company: "Tech Innovations In."
-  period: "2020 - 2023"
-  description: "Architected and implemented high-performance web applications using modern Javascript frameworks. Optimized frontend performance and backend API response times."
+    - Java
+    - Spring
+    - Kubernetes
+    - Public Speaking
+    - Presales
+    - Adoption
+    - Contract Renewal
+
+- title: "Strategic projects for the French Ministry of Armed Forces"
+  company: "Sopra Steria"
+  period: "2016 - 2018"
+  description: |
+    - **Design & Cloud**: Technical lead for OpenStack architecture within the Digital Factory service catalog.
+    - **Critical Systems**: Secure architecture for infrastructure and edge services (Restricted Distribution / NATO Restricted equivalent).
+    - **Cross-Functional Leadership**: Responsible for the design of Administration and Monitoring components for the SIA scope.
+    - **Audit & Research**: Lead for Air Force systems convergence studies and application audits.
+    - **Coordination**: Strategic technical liaison between development teams and decision-making bodies.
   skills:
-    - "React"
-    - "Node.js"
-    - "AWS"
-- title: "Junior Developer"
-  company: "StartUp Inc."
-  period: "2018 - 2020"
-  description: "Collaborated with cross-functional teams to design and ship user-centric features. Maintained legacy codebases and implemented bug fixes."
+    - Architecture
+    - Security
+    - Specifications
+
+- title: "Critical Systems & Defense Expert"
+  company: "Bull / Atos"
+  period: "2006 - 2016"
+  description: |
+    - **Scorpion Programs (SICS/ALICS)**: Architectural design for battlefield digitization (fixed and portable workstations) in coordination with the DGA (French Defense Procurement Agency).
+    - **Product Strategy**: Design of the "Taipan" software suite and leadership of the international export strategy.
+    - **Defense Pre-Sales**: Solution design and cost estimation for weapon systems on FREMM, NG4, and Barracuda programs (Naval Group).
+    - **DevOps Industrialization**: Software lifecycle automation via CI/CD and Git (achieving weekly release cycles).
+    - **Technical R&D**: Development of radio simulators and real-time flow analysis tools (PR4G).
   skills:
-    - "Vue.js"
-    - "Laravel"
-    - "MySQL"
+    - Java
+    - Geospatial
+    - Embedded
+    - Real-time
+    - Presales
+    - Architecture
+
+- title: "Software Engineer"
+  company: "CIM"
+  period: "2002 - 2006"
+  description: |
+    Master’s Degree in Engineering, completed through evening classes while working full-time in professional services.
+  skills:
+    - Java
