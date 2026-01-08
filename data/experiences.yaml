@@ -15,14 +15,14 @@
     - Kubernetes
     - Public Speaking
     - Presales
-    - Adoption
+    - Customer Success
     - Contract Renewal
 
 - title: "Strategic projects for the French Ministry of Armed Forces"
   company: "Sopra Steria"
   period: "2016 - 2018"
   description: |
-    - **Design & Cloud**: Technical lead for OpenStack architecture within the Digital Factory service catalog.
+    - **Design & Cloud**: Technical lead for the Digital Factory service catalog.
     - **Critical Systems**: Secure architecture for infrastructure and edge services (Restricted Distribution / NATO Restricted equivalent).
     - **Cross-Functional Leadership**: Responsible for the design of Administration and Monitoring components for the SIA scope.
     - **Audit & Research**: Lead for Air Force systems convergence studies and application audits.
@@ -37,7 +37,7 @@
   period: "2006 - 2016"
   description: |
     - **Scorpion Programs (SICS/ALICS)**: Architectural design for battlefield digitization (fixed and portable workstations) in coordination with the DGA (French Defense Procurement Agency).
-    - **Product Strategy**: Design of the "Taipan" software suite and leadership of the international export strategy.
+    - **Product Strategy**: Design of the Taipan software suite and leadership of the international export strategy.
     - **Defense Pre-Sales**: Solution design and cost estimation for weapon systems on FREMM, NG4, and Barracuda programs (Naval Group).
     - **DevOps Industrialization**: Software lifecycle automation via CI/CD and Git (achieving weekly release cycles).
     - **Technical R&D**: Development of radio simulators and real-time flow analysis tools (PR4G).
