@@ -1,3 +1,13 @@
+- title: "Enhancing your Spring applications with GenAI and Spring AI"
+  language: "French"
+  event: "Programmez!"
+  date: "Dec 20, 2024"
+  location: "Paris"
+  type: "Article"
+  description: "Spring AI streamlines the integration of Artificial Intelligence into Java applications by bringing the modularity and ease of use of the Spring ecosystem to AI model development."
+  link: "https://www.programmez.com/magazine/article/ajouter-de-la-genai-vos-applications-spring-avec-spring-ai"
+  image: "/images/20241220-programmez-spring-ai.png"
+
 - title: "GenAI Design Patterns"
   language: "French"
   event: "Spring Meetup"

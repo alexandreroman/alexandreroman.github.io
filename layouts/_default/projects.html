@@ -78,6 +78,28 @@
                             {{ .description }}
                         </p>
 
+                        {{ if .image }}
+                        {{ if .link }}
+                        <a href="{{ .link }}" target="_blank" rel="noopener noreferrer"
+                            class="block mb-6 rounded-xl overflow-hidden aspect-video border border-white/10 shadow-lg relative group cursor-pointer">
+                            <div
+                                class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300">
+                            </div>
+                            <img src="{{ .image }}" alt="{{ .title }}"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </a>
+                        {{ else }}
+                        <div
+                            class="mb-6 rounded-xl overflow-hidden aspect-video border border-white/10 shadow-lg relative group">
+                            <div
+                                class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300">
+                            </div>
+                            <img src="{{ .image }}" alt="{{ .title }}"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        {{ end }}
+                        {{ end }}
+
                         {{ $videoID := "" }}
                         {{ if .link }}
                         {{ if and (in .link "youtube.com") (in .link "v=") }}
