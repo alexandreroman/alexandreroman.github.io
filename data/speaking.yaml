@@ -10,7 +10,7 @@
 - title: "Cloud Native Patterns, Optimizing Spring Boot for the Cloud"
   language: "French"
   event: "Spring Meetup"
-  date: "Apr 29, 2024"
+  date: "Mar 27, 2024"
   location: "Paris"
   type: "Meetup"
   description: "A presentation of modern application development patterns using Spring Boot, demonstrated through a sample application deployed on Kubernetes."
