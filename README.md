@@ -1,7 +1,9 @@
 # Alexandre Roman - Personal Landing Page
 
+![Homepage](homepage.png)
+
 This repository contains the source code for my personal landing page, built with [Hugo](https://gohugo.io/).
-The site integrates an interactive chat interface ("Resume Bot") allowing users to ask questions about my professional background.
+The site integrates an interactive chat interface ([Resume Bot](https://github.com/alexandreroman/resumebot)) allowing users to ask questions about my professional background.
 
 ## Architecture
 
