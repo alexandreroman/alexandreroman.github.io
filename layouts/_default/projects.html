@@ -11,39 +11,126 @@
 
     <!-- Projects Section -->
     <section class="mb-20">
-        <h2 class="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4 opacity-0 animate-slide-up"
+        <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-4 opacity-0 animate-slide-up"
             style="animation-delay: 0.2s;">
-            Selected Projects
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 class="text-2xl font-bold text-white">
+                Selected Projects
+            </h2>
+            <div class="flex gap-2">
+                <button id="prev-btn"
+                    class="p-2 rounded-full glass hover:bg-white/10 text-white transition-all disabled:opacity-20 disabled:cursor-not-allowed"
+                    disabled aria-label="Previous projects">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                </button>
+                <button id="next-btn"
+                    class="p-2 rounded-full glass hover:bg-white/10 text-white transition-all disabled:opacity-20 disabled:cursor-not-allowed"
+                    aria-label="Next projects">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="project-carousel"
+            class="flex overflow-x-auto gap-6 no-scrollbar -mx-4 px-4 pb-4 scroll-smooth snap-x snap-mandatory">
             {{ range $index, $element := .Site.Data.projects }}
-            <div class="glass-card p-6 rounded-2xl flex flex-col h-full opacity-0 animate-slide-up"
-                style="animation-delay: {{ printf " %.1f" (add 0.3 (mul $index 0.1)) }}s;">
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold text-white mb-2">{{ .title }}</h3>
-                    <p class="text-gray-400 text-sm">{{ .subtitle }}</p>
-                </div>
-                <div class="flex-grow">
-                    <p class="text-gray-500 text-sm mb-4 leading-relaxed">
-                        {{ .description }}
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2 mt-4">
-                    {{ range .tags }}
-                    <span
-                        class="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">{{
-                        . }}</span>
-                    {{ end }}
-                </div>
-                <div class="mt-6 pt-4 border-t border-white/5 flex justify-end">
+            <div class="flex-none w-[70vw] md:w-[44%] lg:w-[29%] snap-start">
+                <div class="glass-card rounded-2xl flex flex-col h-full opacity-0 animate-slide-up overflow-hidden"
+                    data-delay="{{ printf " %.1f" (add 0.3 (mul $index 0.1)) }}">
+
+                    {{ if .image }}
                     <a href="{{ .link }}" target="_blank" rel="noopener noreferrer"
-                        class="text-primary hover:text-primary-glow text-sm font-medium transition-colors">View
-                        Project →</a>
+                        class="relative aspect-video w-full overflow-hidden border-b border-white/5 block group/img z-0">
+                        <img src="{{ .image }}" alt="{{ .title }}"
+                            class="w-full h-full object-cover transform group-hover/img:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent pointer-events-none">
+                        </div>
+                    </a>
+                    {{ end }}
+
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-2">{{ .title }}</h3>
+                            <p class="text-gray-400 text-sm">{{ .subtitle }}</p>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="text-gray-500 text-sm mb-4 leading-relaxed">
+                                {{ .description }}
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            {{ range .tags }}
+                            <span
+                                class="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">{{
+                                . }}</span>
+                            {{ end }}
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/5 flex justify-end">
+                            <a href="{{ .link }}" target="_blank" rel="noopener noreferrer"
+                                class="text-primary hover:text-primary-glow text-sm font-medium transition-colors">View
+                                Project →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{ end }}
         </div>
+
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply accurate delays
+            document.querySelectorAll('[data-delay]').forEach(el => {
+                el.style.animationDelay = el.getAttribute('data-delay') + 's';
+            });
+
+            const carousel = document.getElementById('project-carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (!carousel || !prevBtn || !nextBtn) return;
+
+            const updateButtons = () => {
+                const { scrollLeft, scrollWidth, clientWidth } = carousel;
+                // Account for the 16px padding (px-4) that makes scrollLeft = 16 at the start
+                // due to snap-align: start. Using 20px as a safe threshold.
+                prevBtn.disabled = scrollLeft <= 20;
+                // Use a 10px threshold for the end to handle subpixel rounding
+                nextBtn.disabled = Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 10;
+            };
+
+            const scrollAmount = () => {
+                const firstItem = carousel.firstElementChild;
+                return firstItem ? firstItem.offsetWidth + 24 : 300;
+            };
+
+            prevBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+            });
+
+            carousel.addEventListener('scroll', updateButtons, { passive: true });
+            window.addEventListener('resize', updateButtons, { passive: true });
+
+            // Run immediately and after a short delay to account for layout shifts
+            updateButtons();
+            setTimeout(updateButtons, 300);
+        });
+    </script>
+
+
+
+
+
 
     <!-- Public Speaking Section -->
     <section>

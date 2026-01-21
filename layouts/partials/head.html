@@ -89,6 +89,13 @@
         .glass-hover {
             @apply hover:bg-white/10 transition-colors duration-300;
         }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     }
     
     body {
