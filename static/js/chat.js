@@ -217,4 +217,38 @@ document.addEventListener('DOMContentLoaded', () => {
         window.visualViewport.addEventListener('resize', handleVisualViewportResize);
         window.visualViewport.addEventListener('scroll', handleVisualViewportResize);
     }
+
+    // Language Cycling Logic
+    const languages = [
+        {
+            placeholder: "Ask me anything..."
+        },
+        {
+            placeholder: "Posez-moi une question..."
+        }
+    ];
+
+    let currentLangIndex = 0;
+
+    function cycleLanguage() {
+        const nextLangIndex = (currentLangIndex + 1) % languages.length;
+        const nextLang = languages[nextLangIndex];
+
+        [promptInput, chatInput].forEach(input => {
+            if (input && input.value.trim() === "") {
+                input.style.transition = 'opacity 0.3s ease-in-out';
+                input.style.opacity = '0';
+
+                setTimeout(() => {
+                    input.placeholder = nextLang.placeholder;
+                    input.style.opacity = '1';
+                }, 300);
+            }
+        });
+
+        currentLangIndex = nextLangIndex;
+    }
+
+    // Start cycling every 3 seconds
+    setInterval(cycleLanguage, 3000);
 });
