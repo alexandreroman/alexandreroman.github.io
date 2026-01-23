@@ -1,3 +1,12 @@
+- title: "SNaiKE"
+  subtitle: "A classic Snake game for the Nintendo GameBoy"
+  description: "A vibe-coded Snake game designed and created with Claude Code. Features progressive speed, high score tracking, and custom sound effects. Can be played in-browser via a Dockerized emulator."
+  link: "https://github.com/alexandreroman/snaike"
+  image: "/images/project-snaike.webp"
+  tags:
+    - "Vibe-Coding"
+    - "GameBoy"
+
 - title: "Second Brain with AI"
   subtitle: "A fully automated Personal Knowledge Management system powered by AI agents"
   description: "An automated \"Second Brain\" designed for Google Antigravity that collects, processes, summarizes, and organizes information from various sources (web, YouTube) into a structured Obsidian vault."
