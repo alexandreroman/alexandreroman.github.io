@@ -34,7 +34,14 @@
       "Bash(python:*)",
       "Bash(npm:*)",
       "Bash(tasklist:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(git worktree:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git rebase:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(git branch:*)"
     ]
   }
 }
