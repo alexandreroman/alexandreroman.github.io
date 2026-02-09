@@ -75,17 +75,31 @@ while you believe you're testing the new one.
    `LCPBreakdown`, `RenderBlocking`, `ThirdParties`, `Cache`).
 6. Summarise results and provide actionable recommendations.
 
+## Starting and stopping Hugo
+
+When you need to start a Hugo server for verification (e.g. from a worktree),
+**always start it as a background task** so you can stop it reliably afterwards.
+
+```
+# Start Hugo as a background Bash command — note the task ID in the response
+hugo server --disableLiveReload --port <port>
+```
+
+After verification is complete, **always stop the Hugo server** using
+`TaskStop` with the task ID returned when you started it. Never leave Hugo
+processes running after you're done.
+
 ## Worktree support
 
 When checking a site running from a **Git worktree**, the Hugo server will be
 on a different port than 1313. Steps:
 
 1. Check that Hugo is running from the worktree directory. If not, start it
-   with an **explicit port** (e.g. `--port 1314`).
+   with an **explicit port** (e.g. `--port 1314`) as a background task.
    > **`--port 0` does NOT work with Hugo** — it binds to port 0 literally
    > instead of picking a random free port. Always specify a real port number.
 2. Use that URL for all `navigate_page` / `take_screenshot` calls.
-3. **Stop the worktree Hugo server** after verification (kill the process).
+3. **Stop the Hugo server** with `TaskStop` using the background task ID.
 
 If `npm install` hasn't been run in the worktree yet, run it before starting
 Hugo — the worktree does not share `node_modules` with the main repo.

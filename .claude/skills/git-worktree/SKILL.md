@@ -61,13 +61,20 @@ conflict with the main dev server (1313) or other worktrees.
 > instead of picking a random free port. Always use an explicit port number
 > (e.g. 1314, 1315, …).
 
+**Always start Hugo as a background Bash command** so you can stop it
+reliably afterwards:
+
 ```bash
 cd ../alexandreroman.fr-<short-name>
-hugo server --port 1314 --bind 0.0.0.0
+hugo server --disableLiveReload --port 1314
+# → note the background task ID from the response
 ```
 
 Use the `hugo-site-check` skill pointing at that port to verify.
-**Always stop this Hugo server** after verification (kill the process).
+
+**After verification, always stop the Hugo server** using `TaskStop` with
+the background task ID. This must happen **before** the integration and
+cleanup steps. Never leave Hugo processes running.
 
 ### 5. Integrate into main (rebase, no merge commit)
 
