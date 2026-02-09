@@ -30,7 +30,7 @@
         <div class="flex items-center justify-center gap-6 mt-8 opacity-0 animate-slide-up"
             style="animation-delay: 0.6s;">
             {{ with .Site.Params.social.github }}
-            <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer me"
                 class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
                 <span class="sr-only">GitHub</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -41,7 +41,7 @@
             {{ end }}
 
             {{ with .Site.Params.social.linkedin }}
-            <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer me"
                 class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
                 <span class="sr-only">LinkedIn</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -66,7 +66,7 @@
             {{ end }}
 
             {{ with .Site.Params.social.x }}
-            <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer me"
                 class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
                 <span class="sr-only">X (Twitter)</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -77,7 +77,7 @@
             {{ end }}
 
             {{ with .Site.Params.social.bluesky }}
-            <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer me"
                 class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
                 <span class="sr-only">Bluesky</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor">
@@ -154,7 +154,7 @@
         <!-- Header -->
         <div class="flex items-center justify-between px-4 sm:px-6 py-3 lg:py-4 border-b border-white/5 bg-white/5">
             <div class="flex items-center gap-3">
-                <img src="/images/profile-picture.jpg" alt="Alexandre Roman"
+                <img src="/images/profile-picture.jpg" alt="Alexandre Roman" loading="lazy"
                     class="w-10 h-10 rounded-full border border-white/10 shadow-sm object-cover" />
                 <h2 id="chat-modal-title" class="sr-only">Chat with Alexandre Roman</h2>
             </div>

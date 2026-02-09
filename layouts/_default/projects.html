@@ -46,7 +46,7 @@
                     {{ if .image }}
                     <a href="{{ .link }}" target="_blank" rel="noopener noreferrer"
                         class="relative aspect-video w-full overflow-hidden border-b border-white/5 block group/img z-0">
-                        <img src="{{ .image }}" alt="{{ .title }}"
+                        <img src="{{ .image }}" alt="{{ .title }}" loading="lazy"
                             class="w-full h-full object-cover transform group-hover/img:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent pointer-events-none">
                         </div>
@@ -152,11 +152,11 @@
                         <h3 class="text-xl font-bold text-white mb-2">
                             {{ .title }}
                             {{ if or (eq .language "French") (eq .language "Français") }}
-                            <img src="https://flagcdn.com/20x15/fr.png" alt="Français"
+                            <img src="https://flagcdn.com/20x15/fr.png" alt="Français" loading="lazy"
                                 class="inline-block h-4 w-auto ml-2 align-baseline rounded-sm shadow-sm opacity-80"
                                 title="Français">
                             {{ else if or (eq .language "English") (eq .language "Anglais") }}
-                            <img src="https://flagcdn.com/20x15/us.png" alt="English"
+                            <img src="https://flagcdn.com/20x15/us.png" alt="English" loading="lazy"
                                 class="inline-block h-4 w-auto ml-2 align-baseline rounded-sm shadow-sm opacity-80"
                                 title="English">
                             {{ end }}
@@ -172,7 +172,7 @@
                             <div
                                 class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300">
                             </div>
-                            <img src="{{ .image }}" alt="{{ .title }}"
+                            <img src="{{ .image }}" alt="{{ .title }}" loading="lazy"
                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         </a>
                         {{ else }}
@@ -181,7 +181,7 @@
                             <div
                                 class="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300">
                             </div>
-                            <img src="{{ .image }}" alt="{{ .title }}"
+                            <img src="{{ .image }}" alt="{{ .title }}" loading="lazy"
                                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         </div>
                         {{ end }}
@@ -206,7 +206,7 @@
                             <div
                                 class="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors pointer-events-none z-10">
                             </div>
-                            <iframe class="absolute top-0 left-0 w-full h-full"
+                            <iframe class="absolute top-0 left-0 w-full h-full" loading="lazy"
                                 src="https://www.youtube.com/embed/{{ $videoID }}" title="{{ .title }}" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen>
