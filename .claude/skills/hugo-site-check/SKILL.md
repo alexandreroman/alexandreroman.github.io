@@ -82,7 +82,7 @@ When you need to start a Hugo server for verification (e.g. from a worktree),
 
 ```
 # Start Hugo as a background Bash command — note the task ID in the response
-hugo server --disableLiveReload --port <port>
+make dev PORT=<port>
 ```
 
 After verification is complete, **always stop the Hugo server** using
@@ -95,14 +95,10 @@ When checking a site running from a **Git worktree**, the Hugo server will be
 on a different port than 1313. Steps:
 
 1. Check that Hugo is running from the worktree directory. If not, start it
-   with an **explicit port** (e.g. `--port 1314`) as a background task.
-   > **`--port 0` does NOT work with Hugo** — it binds to port 0 literally
-   > instead of picking a random free port. Always specify a real port number.
+   with `make dev PORT=<port>` (e.g. `make dev PORT=1314`) as a background task.
+   Dependencies (`npm install`) are handled automatically by `make dev`.
 2. Use that URL for all `navigate_page` / `take_screenshot` calls.
 3. **Stop the Hugo server** with `TaskStop` using the background task ID.
-
-If `npm install` hasn't been run in the worktree yet, run it before starting
-Hugo — the worktree does not share `node_modules` with the main repo.
 
 ## Typical URLs
 
