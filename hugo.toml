@@ -3,7 +3,6 @@ languageCode = 'en'
 title = 'Alexandre Roman'
 theme = []
 
-
 [params]
   description = "Personal landing page of Alexandre Roman. Pre-Sales Expert (Solution Engineer) specializing in Cloud Native technologies, Java, and AI."
 
