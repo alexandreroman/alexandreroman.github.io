@@ -5,7 +5,7 @@ theme = []
 
 
 [params]
-  description = "Personal landing page of Alexandre Roman. Pre-sales expert & software Engineer specializing in Cloud Native technologies, Java, and modern web development."
+  description = "Personal landing page of Alexandre Roman. Pre-Sales Expert (Solution Engineer) specializing in Cloud Native technologies, Java, and AI."
 
 [params.social]
   github = "https://github.com/alexandreroman"

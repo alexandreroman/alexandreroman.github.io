@@ -1,4 +1,4 @@
-<nav id="navbar" data-is-home="{{ .IsHome }}"
+<nav id="navbar" aria-label="Main navigation" data-is-home="{{ .IsHome }}"
     class="fixed top-0 inset-x-0 z-50 flex justify-center items-center px-6 py-4 transition-all duration-300 {{ if .IsHome }}opacity-0 animate-fade-in{{ else }}bg-dark/50 backdrop-blur-xl border-b border-white/5{{ end }}"
     style="{{ if .IsHome }}animation-delay: 0.2s;{{ end }}">
 
@@ -36,7 +36,7 @@
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-btn"
+        <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false"
             class="md:hidden relative z-50 p-2 text-gray-300 hover:text-white focus:outline-none">
             <div class="w-6 h-5 flex flex-col justify-between overflow-hidden">
                 <span id="bar-top"
@@ -111,6 +111,9 @@
             // Toggle Mobile Menu
             mobileBtn.addEventListener('click', () => {
                 isMenuOpen = !isMenuOpen;
+
+                mobileBtn.setAttribute('aria-expanded', isMenuOpen);
+                mobileBtn.setAttribute('aria-label', isMenuOpen ? 'Close menu' : 'Open menu');
 
                 if (isMenuOpen) {
                     // Open Menu

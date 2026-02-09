@@ -1,0 +1,51 @@
+{{- if .IsHome -}}
+{{- $sameAs := slice -}}
+{{- with .Site.Params.social.github -}}
+  {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+{{- with .Site.Params.social.linkedin -}}
+  {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+{{- with .Site.Params.social.x -}}
+  {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+{{- with .Site.Params.social.bluesky -}}
+  {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "ProfilePage"
+  "dateCreated" "2024-01-07T00:00:00+00:00"
+  "dateModified" (now.Format "2006-01-02T15:04:05Z07:00")
+  "mainEntity" (dict
+    "@type" "Person"
+    "@id" (printf "%s#person" .Site.BaseURL)
+    "name" .Site.Title
+    "alternateName" "Alexandre Roman"
+    "description" .Site.Params.description
+    "url" .Site.BaseURL
+    "image" (printf "%simages/profile-picture.jpg" .Site.BaseURL)
+    "jobTitle" "Pre-Sales Expert (Solution Engineer)"
+    "worksFor" (dict
+      "@type" "Organization"
+      "name" "VMware Tanzu"
+    )
+    "knowsAbout" (slice
+      "AI"
+      "Cloud Native Technologies"
+      "Java"
+      "Spring Framework"
+      "Spring Boot"
+      "Spring AI"
+      "Software Engineering"
+      "Kubernetes"
+      "Microservices Architecture"
+    )
+    "sameAs" $sameAs
+  )
+-}}
+<script type="application/ld+json">
+{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
+</script>
+{{- end -}}

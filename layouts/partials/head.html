@@ -22,17 +22,23 @@
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:locale" content="{{ .Site.LanguageCode }}">
+{{- $ogImage := (.Params.image | default "/images/profile-picture.jpg") | absURL -}}
+<meta property="og:image" content="{{ $ogImage }}">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="{{ .Permalink }}">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
 {{ with .Site.Params.social.x }}
 <meta name="twitter:creator" content="@{{ replace . "https://x.com/" "" }}">
 {{ end }}
 
 <link rel="license" href="https://www.apache.org/licenses/LICENSE-2.0">
+
+<!-- Structured Data / Schema.org -->
+{{ partial "schema.html" . }}
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
