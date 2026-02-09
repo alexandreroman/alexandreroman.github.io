@@ -1,6 +1,5 @@
 <nav id="navbar" aria-label="Main navigation" data-is-home="{{ .IsHome }}"
-    class="fixed top-0 inset-x-0 z-50 flex justify-center items-center px-6 py-4 transition-all duration-300 {{ if .IsHome }}opacity-0 animate-fade-in{{ else }}bg-dark/50 backdrop-blur-xl border-b border-white/5{{ end }}"
-    style="{{ if .IsHome }}animation-delay: 0.2s;{{ end }}">
+    class="fixed top-0 inset-x-0 z-50 flex justify-center items-center px-6 py-4 transition-all duration-300 {{ if not .IsHome }}bg-dark/50 backdrop-blur-xl border-b border-white/5{{ end }}">
 
     <div class="w-full max-w-7xl flex items-center justify-between relative">
         <!-- Logo -->
@@ -96,7 +95,6 @@
             const handleScroll = () => {
                 if (window.scrollY > 20) {
                     navbar.classList.add('bg-dark/50', 'backdrop-blur-xl', 'border-b', 'border-white/5');
-                    navbar.classList.remove('opacity-0'); // Ensure it's visible if it was hidden
                 } else {
                     navbar.classList.remove('bg-dark/50', 'backdrop-blur-xl', 'border-b', 'border-white/5');
                 }
