@@ -40,6 +40,21 @@ browser is the source of truth.
 | `list_network_requests` | Inspect network activity |
 | `evaluate_script` | Run JS in the page context |
 
+## Chrome cache: bust it after code changes
+
+Chrome aggressively caches static assets (JS, CSS) served by Hugo's dev server.
+After modifying a file in `static/`, **always verify that Chrome is serving the
+updated version** before drawing any conclusions from a trace or snapshot.
+
+1. Navigate to the raw asset URL (e.g. `/js/chat.js`) and check its content
+   with `take_snapshot` or `evaluate_script`.
+2. If the old code is still served, do a cache-busting reload:
+   `navigate_page` with `type: reload` and `ignoreCache: true`.
+3. Only then run a performance trace or visual check.
+
+Skipping this step can lead to wasted traces that measure the **old** code
+while you believe you're testing the new one.
+
 ## Workflow: content / layout check
 
 1. Navigate to the target URL with `navigate_page`.
@@ -51,12 +66,14 @@ browser is the source of truth.
 ## Workflow: performance analysis
 
 1. Navigate to the target URL with `navigate_page`.
-2. Start a performance trace with `performance_start_trace` (set `reload: true`
+2. **Bust the cache first** (see section above) if any static assets were
+   recently modified.
+3. Start a performance trace with `performance_start_trace` (set `reload: true`
    and `autoStop: true` for a full page-load trace).
-3. Review the summary metrics (LCP, CLS, TTFB).
-4. Drill into relevant insights with `performance_analyze_insight` (e.g.
+4. Review the summary metrics (LCP, CLS, TTFB).
+5. Drill into relevant insights with `performance_analyze_insight` (e.g.
    `LCPBreakdown`, `RenderBlocking`, `ThirdParties`, `Cache`).
-5. Summarise results and provide actionable recommendations.
+6. Summarise results and provide actionable recommendations.
 
 ## Worktree support
 
