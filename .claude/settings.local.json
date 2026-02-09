@@ -44,7 +44,9 @@
       "Bash(git branch:*)",
       "Bash(npm install:*)",
       "Bash(make dev:*)",
-      "Bash(make build:*)"
+      "Bash(make build:*)",
+      "Bash(dir:*)",
+      "Bash(git restore:*)"
     ]
   }
 }

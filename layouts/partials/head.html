@@ -29,7 +29,7 @@
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:locale" content="{{ .Site.LanguageCode }}">
-{{- $ogImage := (.Params.image | default "/images/profile-picture.jpg") | absURL -}}
+{{- $ogImage := (.Params.image | default "/images/profile-picture.webp") | absURL -}}
 <meta property="og:image" content="{{ $ogImage }}">
 
 <!-- Twitter -->
