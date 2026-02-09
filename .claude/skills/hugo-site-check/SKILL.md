@@ -58,7 +58,22 @@ browser is the source of truth.
    `LCPBreakdown`, `RenderBlocking`, `ThirdParties`, `Cache`).
 5. Summarise results and provide actionable recommendations.
 
+## Worktree support
+
+When checking a site running from a **Git worktree**, the Hugo server will be
+on a different port than 1313. Steps:
+
+1. Check that Hugo is running from the worktree directory. If not, start it
+   with `--port 0` to let Hugo pick an available port automatically.
+2. Read the Hugo output to find the assigned port and URL.
+3. Use that URL for all `navigate_page` / `take_screenshot` calls.
+4. **Stop the worktree Hugo server** after verification (kill the process).
+
+If `npm install` hasn't been run in the worktree yet, run it before starting
+Hugo — the worktree does not share `node_modules` with the main repo.
+
 ## Typical URLs
 
-- **Local dev**: `http://127.0.0.1.nip.io:1313/` (Hugo default server)
+- **Local dev (main)**: `http://127.0.0.1.nip.io:1313/` (Hugo default server)
+- **Local dev (worktree)**: `http://127.0.0.1.nip.io:<port>/` (port from Hugo output)
 - **Production**: `https://alexandreroman.fr`

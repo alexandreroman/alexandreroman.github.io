@@ -25,58 +25,94 @@ developed in a dedicated Git worktree, not directly on the current branch.
 
 ### 1. Create the worktree
 
-Before writing any code, create a feature branch and worktree:
+Before writing any code, create a feature branch and worktree.
+Use `-b` to create the new branch (it does not need to exist beforehand):
 
 ```bash
-# Pick a short, descriptive branch name
-git worktree add ../alexandreroman.fr-<branch> -b <branch>
+# Branch name: feature/<short-name>
+# Worktree dir name: short suffix after "alexandreroman.fr-"
+git worktree add -b feature/<short-name> ../alexandreroman.fr-<short-name>
 ```
 
 The worktree is placed **next to** the main repo directory (sibling folder)
 so it doesn't interfere with the current tree.
 
-### 2. Work inside the worktree
+### 2. Install dependencies
+
+The worktree shares git objects but **not** `node_modules`. Always run
+`npm install` inside the worktree before building or starting Hugo:
+
+```bash
+cd ../alexandreroman.fr-<short-name> && npm install
+```
+
+### 3. Work inside the worktree
 
 All file reads, edits, and writes for the planned change must target the
-worktree path (`../alexandreroman.fr-<branch>/...`), **not** the main repo.
+worktree path (`../alexandreroman.fr-<short-name>/...`), **not** the main
+repo.
 
-If the project has dependencies (e.g. `npm install`), run them inside the
-worktree as well.
+### 4. Verify with Hugo
 
-### 3. Verify
-
-Run the dev server and any checks from within the worktree. If the
-`hugo-site-check` skill is used, make sure the server started is the one
-from the worktree.
-
-### 4. Merge back
-
-Once the change is validated:
+Start Hugo from the worktree on a **random available port** so it doesn't
+conflict with the main dev server or other worktrees. Use `--port 0` to
+let Hugo pick an available port automatically:
 
 ```bash
-# From the main working tree
-git merge <branch>
+cd ../alexandreroman.fr-<short-name>
+hugo server --port 0 --bind 0.0.0.0
 ```
 
-Then clean up:
+Read the Hugo output to find the assigned port, then use the
+`hugo-site-check` skill pointing at that port to verify.
+**Always stop this Hugo server** after verification (kill the process).
+
+### 5. Integrate into main (rebase, no merge commit)
+
+Once the change is validated, rebase the feature branch onto main and
+fast-forward main. **Never create merge commits** — the history must stay
+linear.
 
 ```bash
-git worktree remove ../alexandreroman.fr-<branch>
-git branch -d <branch>
+# From the worktree: rebase onto main
+cd ../alexandreroman.fr-<short-name>
+git rebase main
+
+# From the main working tree: fast-forward main
+cd ../alexandreroman.fr
+git merge --ff-only feature/<short-name>
 ```
 
-### 5. If the change is abandoned
+### 6. Clean up (mandatory)
+
+**Always** remove the worktree and branch at the end, whether the change was
+integrated or abandoned. This step is **not optional**.
+
+After a successful integration:
 
 ```bash
-git worktree remove ../alexandreroman.fr-<branch>
-git branch -D <branch>
+git worktree remove ../alexandreroman.fr-<short-name>
+git branch -d feature/<short-name>
+```
+
+After an abandoned change:
+
+```bash
+git worktree remove ../alexandreroman.fr-<short-name>
+git branch -D feature/<short-name>
 ```
 
 ## Rules
 
 - **Never commit planned changes directly to the current branch.** Always use
   a worktree.
+- **Never create merge commits.** Always rebase + fast-forward (`--ff-only`).
+- **Always clean up the worktree and branch at the end of every operation.**
+  No worktree or feature branch should remain after the task is complete.
 - The worktree branch name should reflect the change (e.g.
-  `feat/precompile-css`, `fix/lcp-performance`).
+  `feature/precompile-css`, `feature/round-favicon`).
 - Keep the main working tree on the original branch at all times during the
   plan execution.
+- Use `--port 0` for the worktree Hugo server to pick a free port automatically.
+- Always run `npm install` in the worktree before building.
+- Always clean up temporary scripts used during generation.

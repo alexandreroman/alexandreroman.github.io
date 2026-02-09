@@ -30,7 +30,11 @@
       "mcp__chrome-devtools__press_key",
       "mcp__chrome-devtools__resize_page",
       "mcp__chrome-devtools__upload_file",
-      "mcp__chrome-devtools__wait_for"
+      "mcp__chrome-devtools__wait_for",
+      "Bash(python:*)",
+      "Bash(npm:*)",
+      "Bash(tasklist:*)",
+      "Bash(git:*)"
     ]
   }
 }
