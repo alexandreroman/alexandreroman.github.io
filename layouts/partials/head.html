@@ -47,9 +47,12 @@
 <!-- Structured Data / Schema.org -->
 {{ partial "schema.html" . }}
 
-<!-- Google Fonts -->
+<!-- Preconnect to CDNs -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{ if .IsHome }}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+{{ end }}
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Tailwind CSS (pre-compiled via PostCSS) -->
