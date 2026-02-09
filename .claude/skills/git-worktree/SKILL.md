@@ -45,6 +45,8 @@ repo.
 
 ### 3. Verify with Hugo
 
+**Do not commit yet.** First verify that the changes work correctly.
+
 Start Hugo from the worktree on a **different port** so it doesn't
 conflict with the main dev server (1313) or other worktrees.
 
@@ -62,18 +64,26 @@ Dependencies (`npm install`) are handled automatically by `make dev`.
 Use the `hugo-site-check` skill pointing at that port to verify.
 
 **After verification, always stop the Hugo server** using `TaskStop` with
-the background task ID. This must happen **before** the integration and
-cleanup steps. Never leave Hugo processes running.
+the background task ID. This must happen **before** the commit and
+integration steps. Never leave Hugo processes running.
 
-### 4. Integrate into main (rebase, no merge commit)
+### 4. Commit
+
+Only commit **after** the changes have been verified in the browser.
+Stage and commit all relevant files in the worktree.
+
+### 5. Integrate into main (rebase, no merge commit)
 
 Once the change is validated, rebase the feature branch onto main and
 fast-forward main. **Never create merge commits** — the history must stay
 linear.
 
 ```bash
-# From the worktree: rebase onto main
+# From the worktree: restore package-lock.json (modified by `make dev`)
 cd ../alexandreroman.fr-<short-name>
+git restore package-lock.json
+
+# Rebase onto main
 git rebase main
 
 # From the main working tree: fast-forward main
@@ -81,7 +91,7 @@ cd ../alexandreroman.fr
 git merge --ff-only feature/<short-name>
 ```
 
-### 5. Clean up (mandatory)
+### 6. Clean up (mandatory)
 
 **Always** remove the worktree and branch at the end, whether the change was
 integrated or abandoned. This step is **not optional**.
