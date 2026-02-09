@@ -54,17 +54,19 @@ repo.
 
 ### 4. Verify with Hugo
 
-Start Hugo from the worktree on a **random available port** so it doesn't
-conflict with the main dev server or other worktrees. Use `--port 0` to
-let Hugo pick an available port automatically:
+Start Hugo from the worktree on a **different port** so it doesn't
+conflict with the main dev server (1313) or other worktrees.
+
+> **`--port 0` does NOT work with Hugo** — it will bind to port 0 literally
+> instead of picking a random free port. Always use an explicit port number
+> (e.g. 1314, 1315, …).
 
 ```bash
 cd ../alexandreroman.fr-<short-name>
-hugo server --port 0 --bind 0.0.0.0
+hugo server --port 1314 --bind 0.0.0.0
 ```
 
-Read the Hugo output to find the assigned port, then use the
-`hugo-site-check` skill pointing at that port to verify.
+Use the `hugo-site-check` skill pointing at that port to verify.
 **Always stop this Hugo server** after verification (kill the process).
 
 ### 5. Integrate into main (rebase, no merge commit)
@@ -113,6 +115,7 @@ git branch -D feature/<short-name>
   `feature/precompile-css`, `feature/round-favicon`).
 - Keep the main working tree on the original branch at all times during the
   plan execution.
-- Use `--port 0` for the worktree Hugo server to pick a free port automatically.
+- Use an explicit port (e.g. `--port 1314`) for the worktree Hugo server.
+  `--port 0` does **not** work with Hugo.
 - Always run `npm install` in the worktree before building.
 - Always clean up temporary scripts used during generation.

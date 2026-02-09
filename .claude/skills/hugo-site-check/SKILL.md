@@ -81,10 +81,11 @@ When checking a site running from a **Git worktree**, the Hugo server will be
 on a different port than 1313. Steps:
 
 1. Check that Hugo is running from the worktree directory. If not, start it
-   with `--port 0` to let Hugo pick an available port automatically.
-2. Read the Hugo output to find the assigned port and URL.
-3. Use that URL for all `navigate_page` / `take_screenshot` calls.
-4. **Stop the worktree Hugo server** after verification (kill the process).
+   with an **explicit port** (e.g. `--port 1314`).
+   > **`--port 0` does NOT work with Hugo** — it binds to port 0 literally
+   > instead of picking a random free port. Always specify a real port number.
+2. Use that URL for all `navigate_page` / `take_screenshot` calls.
+3. **Stop the worktree Hugo server** after verification (kill the process).
 
 If `npm install` hasn't been run in the worktree yet, run it before starting
 Hugo — the worktree does not share `node_modules` with the main repo.
