@@ -24,7 +24,7 @@ module.exports = {
       animation: {
         'fade-in': 'fadeIn 1s ease-out forwards',
         'slide-up': 'slideUp 0.8s ease-out forwards',
-        'slide-up-visible': 'slideUpVisible 0.8s ease-out forwards',
+        'slide-up-visible': 'slideUpVisible 0.8s ease-out both',
       },
       keyframes: {
         fadeIn: {
