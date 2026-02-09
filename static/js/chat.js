@@ -249,6 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLangIndex = nextLangIndex;
     }
 
-    // Start cycling every 3 seconds
-    setInterval(cycleLanguage, 3000);
+    // Start cycling when user focuses the prompt (avoids resetting LCP measurement).
+    // 'focus' fires on both click and keyboard tab, and { once: true } ensures single execution.
+    promptInput.addEventListener('focus', () => {
+        cycleLanguage();
+        setInterval(cycleLanguage, 3000);
+    }, { once: true });
 });
