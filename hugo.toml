@@ -7,8 +7,8 @@ theme = []
   description = "Personal landing page of Alexandre Roman. Pre-Sales Expert (Solution Engineer) specializing in Cloud Native technologies, Java, and AI."
 
 [params.social]
-  github = "https://github.com/alexandreroman"
-  linkedin = "https://linkedin.com/in/alexandre-roman"
-  x = "https://x.com/Alexandre_Roman"
-  bluesky = "https://bsky.app/profile/alexandreroman.fr"
+  github = "https://aro.fyi/github"
+  linkedin = "https://aro.fyi/linkedin"
+  x = "https://aro.fyi/x"
+  bluesky = "https://aro.fyi/bluesky"
   cv = "https://docs.google.com/document/d/1zer7a3T31x_8r3G3RI-D4T7Mvsu1XHJLocxLm8iLEfg/edit?usp=sharing"

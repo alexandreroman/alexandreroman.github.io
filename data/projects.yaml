@@ -1,7 +1,7 @@
 - title: "SNaiKE"
   subtitle: "A classic Snake game for the Nintendo GameBoy"
   description: "A vibe-coded Snake game designed and created with Claude Code. Features progressive speed, high score tracking, and custom sound effects. Can be played in-browser via a Dockerized emulator."
-  link: "https://github.com/alexandreroman/snaike"
+  link: "https://aro.fyi/snaike"
   image: "/images/project-snaike.webp"
   tags:
     - "Vibe-Coding"
@@ -10,7 +10,7 @@
 - title: "Second Brain with AI"
   subtitle: "A fully automated Personal Knowledge Management system powered by AI agents"
   description: "An automated \"Second Brain\" designed for Claude Code that collects, processes, summarizes, and organizes information from various sources (web, YouTube) into a structured Obsidian vault."
-  link: "https://github.com/alexandreroman/second-brain-template"
+  link: "https://aro.fyi/second-brain-template"
   image: "/images/project-second-brain.webp"
   tags:
     - "AI"
@@ -21,7 +21,7 @@
 - title: "Resume Bot"
   subtitle: "A chatbot for discussing my CV and professional background"
   description: "An interactive chatbot designed to discuss my CV and professional background (it is actually the application powering this website)."
-  link: "https://github.com/alexandreroman/resumebot"
+  link: "https://aro.fyi/resumebot"
   image: "/images/project-resumebot.webp"
   tags:
     - "Spring AI"
@@ -31,7 +31,7 @@
 - title: "Chess AI"
   subtitle: "Play chess against an AI and discuss the best move to play"
   description: "A Spring Boot & Spring AI application for playing chess against an AI, featuring an integrated chatbot to explain moves and provide strategic assistance."
-  link: "https://github.com/alexandreroman/chess-ai"
+  link: "https://aro.fyi/chess-ai"
   image: "/images/project-chess-ai.webp"
   tags:
     - "Spring AI"
@@ -42,7 +42,7 @@
 - title: "swulimited.com"
   subtitle: "A deckbuilder for the trading card game Star Wars Unlimited"
   description: "A website for building SWU decks in limited format. The app simulates opening booster packs, and users must build their decks from the cards they pull."
-  link: "https://swulimited.com"
+  link: "https://aro.fyi/swulimited"
   image: "/images/project-swulimited.webp"
   tags:
     - "TypeScript"
