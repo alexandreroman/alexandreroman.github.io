@@ -1,3 +1,12 @@
+- title: "Redir"
+  subtitle: "A lightweight URL redirection service with click tracking"
+  description: "A URL redirection service written in Go, featuring click tracking powered by Redis, automatic QR code generation, and social media preview support via Open Graph meta tags."
+  link: "https://aro.fyi/redir"
+  image: "/images/project-redir.webp"
+  tags:
+    - "Go"
+    - "Redis"
+
 - title: "SNaiKE"
   subtitle: "A classic Snake game for the Nintendo GameBoy"
   description: "A vibe-coded Snake game designed and created with Claude Code. Features progressive speed, high score tracking, and custom sound effects. Can be played in-browser via a Dockerized emulator."
